@@ -1,0 +1,323 @@
+@font-face {
+    font-family: Sailec;
+    src: url(../Assets/Fonts/Sailec.otf);
+}
+@mixin space_between{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@mixin commonTransition {
+    transition: all ease-in-out 0.5s;
+}
+img{
+    width: 100%;
+}
+button{
+    cursor: pointer;
+    font-family: Sailec;
+}
+*{
+    box-sizing: border-box;
+}
+html,body{
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    font-family: Sailec;
+    font-size: 14px;
+}
+.outer{
+    height: 100vh;
+    width: 100%;
+    overflow-y: scroll;
+}
+header{
+    padding: 44px 100px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    @include space_between();
+    #logo{
+        width: 93px;
+    }
+    .hamIcon{
+        display: none;
+    }
+    .nav_outer{
+        @include space_between();
+        nav{
+            ul{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            li{
+                margin-right: 36px;
+                position: relative;
+                cursor: pointer;
+            }::after{
+                content: '';
+                width: 0px;
+                bottom: -3px;
+                height: 1px;
+                left: 0;
+                background-color: black;
+                position: absolute;
+                @include commonTransition()
+            }:hover::after{
+                width: 100%;
+                @include commonTransition()
+            }
+            }
+        }
+        .user_ico{
+            width: 24px;
+            margin-left: 80px;
+        }
+    }
+}
+.main_banner{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+.banner_dark_block{
+    height: 100vh;
+    width: 60%;
+    background-color: #102421;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .banner_content{
+        width: 498px;
+        p:nth-child(1){
+            color: #D2D2D2;
+            letter-spacing: 0.5em;
+            position: relative;
+            animation-name: animateText;
+            animation-duration: 2s;
+            animation-timing-function: ease-out
+        }
+        p:nth-child(2){
+            color: #FFFFFF;
+            font-size: 88px;
+            font-weight: bold;
+            margin: 0;
+            position: relative;
+            animation-name: animateText;
+            animation-duration: 4s;
+            animation-timing-function: ease-out
+        }
+        p:nth-child(3){
+            color: #D2D2D2;
+            font-size: 22px;
+            position: relative;
+            animation-name: animateText;
+            animation-duration: 6s;
+            animation-timing-function: ease-out
+        }
+        .button_wrap{
+            margin-top: 100px;
+            button{
+                background-color: #C7E1BF;
+                border-radius: 50px;
+                border:0px solid;
+                color: #102522;
+                padding: 20px 26px;
+                @include commonTransition();
+            }:nth-child(1){
+                margin-right: 50px;
+            }
+            button:hover{
+                background-color: #c7e1bf4a;
+                color: #a9a9a9;
+                @include commonTransition();
+            }
+        }
+    }
+}
+.banner_image{
+    position: absolute;
+    width: 40%;
+    height: calc(100vh - 30vh);
+    background-image: url(../Assets/Images/banner_img.svg);
+    opacity: 0.8;
+    top: 15vh;
+    right: 0px;
+    background-size: cover;
+    background-position:center;
+    @include commonTransition();
+}
+.animateBanner{
+    opacity: 1;
+    right: 100px;
+    @include commonTransition();
+}
+
+@media only screen and (max-width: 1660px) {
+    body{
+        font-size: 12px;
+    }
+    header{
+        padding: 34px 80px;
+        #logo{
+            width: 83px;
+        }
+        .nav_outer{
+            nav{
+                ul{
+                    li{
+                        margin-right: 25px;
+                        position: relative;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .user_ico{
+                width: 15px;
+                margin-left: 30px;
+            }
+        }
+        
+    }
+
+
+    .banner_dark_block{
+        .banner_content{
+            width: 400px;
+            p:nth-child(2){
+                font-size: 60px;
+            }
+            p:nth-child(3){
+                font-size: 18px;
+            }
+            .button_wrap{
+                margin-top: 80px;
+                button{
+                    padding: 15px 20px;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 1200px) {
+    .banner_dark_block{
+        width: 100%;
+        position: relative;
+        .banner_content{
+            width: 85%;
+            position: relative;
+            z-index: 2;
+        }
+    }
+    
+    .animateBanner{
+        z-index: 1;
+        opacity: 0.4;
+    }
+    header{
+        z-index: 3;
+        padding:34px 8%;
+        #logo{
+            width: 60px;
+        }
+        .hamIcon{
+            display: block;
+            position: relative;
+            z-index: 2;
+            div{
+                height: 2px;
+                width: 25px;
+                background-color: white;
+                margin-bottom: 4px;
+            }
+        }
+        .act_button div:nth-child(3){
+            opacity: 0;
+        }
+        .act_button div:nth-child(1){
+            @include commonTransition();
+            transform: rotate(40deg);
+            background-color: black;
+            margin: 0;
+        }
+        .act_button div:nth-child(2){
+            @include commonTransition();
+            transform: rotate(-40deg);
+            background-color: black;
+        }
+        .nav_outer{
+            nav{
+                ul{
+                    position: fixed;
+                    left: 0;
+                    top: -100%;
+                    height: 100%;
+                    width: 100%;
+                    background-color: #e8e8e8;
+                    z-index: 1;
+                    @include commonTransition();
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    a{
+                        opacity: 0;
+                        margin-bottom: 0rem;
+                    }
+                }
+                .active_nav{
+                    top: 0;
+                    @include commonTransition();
+                    li{
+                        opacity: 1;
+                        transition: all ease 1s;
+                        font-size: 2rem;
+                        margin-bottom: 2rem;
+                    }
+                }
+            }
+        }
+        .cart{
+            display: none;
+        }
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .banner_dark_block .banner_content p:nth-child(2) {
+        font-size: 50px;
+    }
+    .banner_dark_block .banner_content p:nth-child(3) {
+        font-size: 14px;
+    }
+    .banner_dark_block .banner_content .button_wrap button {
+        padding: 10px 9px;
+    }
+    .banner_dark_block .banner_content .button_wrap :nth-child(1) {
+        margin-right: 20px;
+    }
+    .banner_image{
+        width: 0%;
+    }
+    .animateBanner{
+        right: 3%;
+        width:calc(100% - 6%);
+        opacity: 0.3;
+    }
+}
+
+// animation
+@keyframes animateText{
+    0%{
+        opacity: 0;
+        top: 30px;
+    }
+    100%{
+        opacity: 1;
+        top: 0px;
+    }
+}
